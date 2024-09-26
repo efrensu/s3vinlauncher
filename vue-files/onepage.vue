@@ -1,8 +1,12 @@
 <script setup>
+import { ref } from 'vue';
+
+const count=ref(0)
 
 </script>
 
 <template>
+<body>
     <header class="upper">
         <nav>
             <div class="toptext" style="margin-left: 5.5%;">
@@ -27,6 +31,7 @@
             </div>
         </nav>
     </header>
+
     <header class="lower">
         <nav>
             <div class="lowertext" style="margin-left:5.5% ;">
@@ -38,6 +43,7 @@
             </div>
         </nav>
     </header>
+
     <header class="middle">
         <div class="list">
             <button class="filters">View All</button>
@@ -49,112 +55,213 @@
         <hr style="width: 89%;"/>
         </div>
     </header>
-    <header class="cards">
 
-        <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-        </div>
+    <header class="layout-cards">
 
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                        <div style="display: flex;flex-direction: row;align-items: center;">
+                            <img class="card-icon" src="@/assets/business-icon.svg" style="background-color: rgba(41, 156, 219, 0.10);"/>
+                            <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Manage Business</p>
+                        </div>
+                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                        <p v-else></p>
+                    </div>
+                    <p>Assign application access to businesses at a Super Admin level.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                        <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/manage-account-icon.svg" style="background-color: #FFFBEB;"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Manage User</p>
+                        </div>
+                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                        <p v-else></p>
+                    </div>
+                    <p>Create and manage your user all from a single dashboard.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                        <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/printer-icon.svg" style="background-color: #ECFDF5;"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Check Printing</p>
+                        </div>
+                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                        <p v-else></p>
+                    </div>
+                        <p>Streamline employee check management for timely payroll distribution</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                        <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/rubric-icon.svg" style="background-color: #FEF2F2;"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Spread It</p>
+                        </div>
+                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                        <p v-else></p>
+                    </div>
+                    <p>Streamline your workflow with our easy-to-use spreadsheet tool.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/accounting-icon.svg" style="background-color: #ECFDF5;;"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Accounting</p>
+                    </div>
+                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                        <p v-else></p>
+                    </div>
+                    <p>Track and manage paid and received invoices.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                        <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/upload-icon.svg" style="background-color: rgba(75, 56, 179, 0.10);"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">File Uploader</p>
+                    </div>
+                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                        <p v-else></p>
+                    </div>
+                    <p>Keep track of all funded payroll invoices.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                        <div style="display: flex;flex-direction: row;align-items: center;">
+                            <img class="card-icon" src="@/assets/zendesk.svg"/>
+                            <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Payments Recieved</p>
+                        </div>
+                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                            <p v-else></p>
+                        </div>
+                    <p>Manage and confirmed all recorded payroll payments from customers.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/jira.svg"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Groups</p>
+                    </div>
+                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                            <p v-else></p>
+                    </div>
+                    <p>Create, share and save groups that are referenced frequently within the S3V!N system.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
+
+            <div class="outerborder">
+                <div class="inner">
+                    <div class="maintitle">
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="card-icon" src="@/assets/dropbox.svg"/>
+                        <p style="padding-left: 10px; font-size: 16px;font-weight: bold;">Reports</p>
+                    </div>
+                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                            <p v-else></p>
+                    </div>
+                    <p>Generate and download reports custom reports.</p>
+                </div>
+                <hr style="border: 1px solid #E5E7EB;" />
+                <button class="card-button">Launch</button>
+            </div>
     </header>
     <header class="pagenav">
-        <div style="margin:0% 5.5%;">
+        <div>
             <hr />
         </div>
         <nav>
-            <div class="pagecont" style="margin-left: 5.5%;">
+            <div class="pagecont">
                 <div class="pagenavfont">
                 <img src="@\assets\arrow-narrow-left.svg" style="margin-right: 5px;width: 20px;height: 20px;">
                 <p class="pagenavfont">Previous</p>
                 </div>
             </div>
-            <div class="pagecont" style="margin-right: 5.5%;">
+            <div class="pagecont">
                 <div class="pagenavfont">
-                <p>Next</p>
+                <p class="pagenavfont">Next</p>
                 <img src="@\assets\arrow-narrow-right.svg" style="margin-left: 5px;width: 20px;height: 20px;">
                 </div>
             </div>
         </nav>
     </header>
+</body>
 </template>
 
 <style scoped>
 
+body{
+    min-width: 100vw;
+}
     .upper{
         background-color: #0C111D;
         width: 100%;
-        position: fixed;
     }
 
     .lower{
         color: black;
-        margin-top: 184px;
+        margin-top: 32px;
         width: 100%;
-        position: fixed;
     }
 
     .middle{
-        margin-top: 275px;
+        margin-top: 24px;
         margin-left: 5.5%;
         width: 100%;
-        position: fixed;
     }
 
-    .cards{
-        margin-top: 366px;
+    .layout-cards{
         margin-left: 5.5%;
-        width: 100%;
-        position: fixed;
-    }
-
-    .card-text{
-        color: black;
+        width: 89%;
+        margin-top: 24px;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 
     .pagenav{
-        margin-top: 990px;
-        width: 100%;
-        position: fixed;
-
+        margin:0% 5.5%;
+        margin-top: 24px;
     }
 
-    nav{
+    nav{        
         align-items:center;
         display:flex;
         flex-direction: row;
@@ -250,13 +357,64 @@
     }
 
     .pagenavfont{
+        align-items:center;
+        display:flex;
+        flex-direction: row;
         font-size: 14px;
         font-weight: 600;
         color:#475467;
         &:hover{
             cursor: pointer;
         }
-        
     }
+
+.outerborder{
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0.5% 2%;
+    border: 2px solid #E5E7EB;
+}
+
+.inner{
+    margin:15px;
+    color: black;
+}
+
+.maintitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.card-button{
+    width: 180%;
+    align-content: end;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    padding: 0px;
+    background-color: transparent;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.newnote{
+    color:#DC2626;
+    margin-bottom: 15px;
+    padding: 1px 7px;
+    background-color: #FEF2F2;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.card-icon{
+    border-radius: 5px;
+    padding: 5px;
+    width: 40px;
+}
 
 </style>
