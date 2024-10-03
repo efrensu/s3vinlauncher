@@ -5,29 +5,49 @@ const count = ref(0)
 const admins = ref(true)
 const devtools = ref(true)
 const business = ref(true)
+const colorview = ref(true)
+const coloradmin = ref(false)
+const colorbusiness = ref(false)
+const colordevtools = ref(false)
 
-function filterViewAll(){
+function filterViewAll() {
     admins.value = true
     devtools.value = true
     business.value = true
+    colorview.value = true
+    coloradmin.value = false
+    colorbusiness.value = false
+    colordevtools.value = false
 }
 
-function filterAdmins(){
+function filterAdmins() {
     devtools.value = false
     business.value = false
     admins.value = true
+    colorview.value = false
+    coloradmin.value = true
+    colorbusiness.value = false
+    colordevtools.value = false
 }
 
-function filterBusiness(){
+function filterBusiness() {
     admins.value = false
     devtools.value = false
     business.value = true
+    colorview.value = false
+    coloradmin.value = false
+    colorbusiness.value = true
+    colordevtools.value = false
 }
 
-function filterDevtools(){
+function filterDevtools() {
     admins.value = false
     devtools.value = true
     business.value = false
+    colorview.value = false
+    coloradmin.value = false
+    colorbusiness.value = false
+    colordevtools.value = true
 }
 
 </script>
@@ -37,11 +57,11 @@ function filterDevtools(){
     <body>
         <header class="upper">
             <nav>
-                <div class="toptext" style="margin-left: 5.5%;">
+                <div class="toptext" style="margin-left: 7.8%;">
                     <img class="logo" src="@/assets/s3vin-logo.svg" />
                     <p style="font-size: 37.524px; font-weight: 700; margin-top: 15PX;">S3V!N</p>
                 </div>
-                <div class="toptext" style="margin-right: 5.5%;">
+                <div class="toptext" style="margin-right: 7.8%;">
                     <img class="generalicon" src="@/assets/grid-9-icon.svg" />
                     <img class="generalicon" src="@/assets/bell-icon.svg" />
                     <img class="profile" src="@/assets/pfp-icon.png" />
@@ -49,10 +69,10 @@ function filterDevtools(){
             </nav>
             <hr style="border: 1px solid #475467;margin: 0px;" />
             <nav>
-                <div class="toptext" style="margin-left: 5.5%;">
+                <div class="toptext" style="margin-left: 7.8%;">
                     <button class="home">App Launcher</button>
                 </div>
-                <div class="toptext" style="margin-right: 5.5%;">
+                <div class="toptext" style="margin-right: 7.8%;">
                     <img class="generalicon" src="@/assets/grid-9-icon.svg" />
                     <img class="generalicon" src="@/assets/chevron-right.svg">
                     <p style="white-space: nowrap; font-size:14px; margin-top: 15px;">App Launcher</p>
@@ -61,264 +81,323 @@ function filterDevtools(){
         </header>
 
         <header class="lower">
+
             <nav>
-                <div class="lowertext" style="margin-left:5.5% ;">
+
+                <div class="lowertext" style="margin-left:7.8% ;">
                     <p style="font-size: 24px;font-weight: 600;">App Launcher</p>
                     <p style="font-weight: 400;font-size: 16px;">Launch an app below to supercharge your work day.</p>
                 </div>
-                <div style="margin-right: 5.5%;">
-                    <button class="apppermission">+ Request App Permission</button>
+
+                <div style="margin-right: 7.8%;">
+                    <button class="apppermission"><img src="@/assets/plus-icon.svg" style="margin-top: -1px;"> Request
+                        App Permission</button>
                 </div>
+
             </nav>
+
         </header>
 
         <header class="middle">
             <div>
-                <button class="filters" @click="filterViewAll">View All</button>
-                <button class="filters" @click="filterDevtools">Developer tools</button>
-                <button class="filters" @click="filterAdmins">For Admins</button>
-                <button class="filters" @click="filterBusiness">For Business</button>
+
+                <button class="filters" @click="filterViewAll" v-if="colorview.valueOf(true)"
+                    style="color: #059669; border-bottom: 2px solid #10B981;">View All</button>
+                <button class="filters" @click="filterViewAll" v-else>View All</button>
+
+                <button class="filters" @click="filterDevtools" v-if="colordevtools.valueOf(true)"
+                    style="color: #059669; border-bottom: 2px solid #10B981;">Developer tools</button>
+                <button class="filters" @click="filterDevtools" v-else>Developer tools</button>
+
+                <button class="filters" @click="filterAdmins" v-if="coloradmin.valueOf(true)"
+                    style="color: #059669; border-bottom: 2px solid #10B981;">For Admins</button>
+                <button class="filters" @click="filterAdmins" v-else>For Admins</button>
+
+                <button class="filters" @click="filterBusiness" v-if="colorbusiness.valueOf(true)"
+                    style="color: #059669; border-bottom: 2px solid #10B981;">For Business</button>
+                <button class="filters" @click="filterBusiness" v-else>For Business</button>
+
             </div>
+
             <div>
-                <hr style="width: 89%; margin-top: -2px;" />
+                <hr style="width: 84.4%; margin-top: -2px; border:1px solid #667085;" />
             </div>
+
         </header>
 
         <header class="layout-cards">
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
                 <div v-if="business.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/business-icon.svg" style="background-color: rgba(41, 156, 219, 0.10);" />
-                            <p class="card-text-title">Manage Business</p>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/business-icon.svg"
+                                            style="background-color: #F9FAFB;" />
+                                        <p class="card-text-title">Manage Business</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Assign application access to businesses at a Super Admin
+                                        level.</p>
+                                </div>
                             </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
                         </div>
-                            <div>
-                                <p class="card-text-body">Assign application access to businesses at a Super Admin level.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
                     </div>
-                </div>
                 </div>
 
                 <div v-if="admins.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/manage-account-icon.svg" style="background-color: #FFFBEB;" />
-                            <p class="card-text-title">Manage User</p>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/manage-account-icon.svg"
+                                            style="background-color: #FFF7ED;" />
+                                        <p class="card-text-title">Manage User</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Create and manage your user all from a single dashboard.
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
                         </div>
-                            <div>
-                                <p class="card-text-body">Create and manage your user all from a single dashboard.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
                     </div>
-                </div>
                 </div>
 
                 <div v-if="admins.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/printer-icon.svg" style="background-color: #ECFDF5;" />
-                            <p class="card-text-title">Check Printing</p>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/printer-icon.svg"
+                                            style="background-color: #EEF2FF;" />
+                                        <p class="card-text-title">Check Printing</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Streamline employee check management for timely payroll
+                                        distribution.</p>
+                                </div>
                             </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
                         </div>
-                            <div>
-                                <p class="card-text-body">Streamline employee check management for timely payroll distribution.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
                     </div>
-                </div>
-                </div>
-
-                <div v-if="admins.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/rubric-icon.svg" style="background-color: #FEF2F2;" />
-                            <p class="card-text-title">Spread It</p>
-                            </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
-                        </div>
-                            <div>
-                                <p class="card-text-body">Streamline your workflow with our easy-to-use spreadsheet tool.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
-                    </div>
-                </div>
-                </div>
-
-                <div v-if="admins.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/accounting-icon.svg" style="background-color: #ECFDF5;;" />
-                            <p class="card-text-title">Accounting</p>
-                            </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
-                        </div>
-                            <div>
-                                <p class="card-text-body">Track and manage paid and received invoices.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
-                    </div>
-                </div>
                 </div>
 
                 <div v-if="admins.valueOf(true) || business.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/upload-icon.svg" style="background-color: rgba(75, 56, 179, 0.10);" />
-                            <p class="card-text-title">File Uploader</p>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/rubric-icon.svg"
+                                            style="background-color: #F5F3FF;" />
+                                        <p class="card-text-title">Spread It</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Streamline your workflow with our easy-to-use spreadsheet
+                                        tool.</p>
+                                </div>
                             </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
                         </div>
-                            <div>
-                                <p class="card-text-body">Keep track of all funded payroll invoices.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
                     </div>
-                </div>
                 </div>
 
                 <div v-if="admins.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/zendesk.svg" />
-                            <p class="card-text-title">Payments Recieved</p>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/accounting-icon.svg"
+                                            style="background-color: #ECFDF5;;" />
+                                        <p class="card-text-title">Accounting</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Track and manage paid and received invoices.</p>
+                                </div>
                             </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
                         </div>
-                            <div>
-                                <p class="card-text-body">Manage and confirmed all recorded payroll payments from customers.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
                     </div>
-                </div>
-                </div>
-
-                <div v-if="admins.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                            <img class="card-icon" src="@/assets/jira.svg" />
-                            <p class="card-text-title">Groups</p>
-                            </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
-                        </div>
-                            <div>
-                                <p class="card-text-body">Create, share and save groups that are referenced frequently within the S3V!N system.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
-                    </div>
-                </div>
                 </div>
 
                 <div v-if="admins.valueOf(true) || business.valueOf(true)">
-                <div class="col">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-style">
-                            <div class="card-body-image">
-                                <img class="card-icon" src="@/assets/dropbox.svg" />
-                            <p class="card-text-title">Reports</p>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/upload-icon.svg"
+                                            style="background-color: #FFFBEB;" />
+                                        <p class="card-text-title">File Uploader</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Keep track of all funded payroll invoices.</p>
+                                </div>
                             </div>
-                            <div>
-                            <p class="newnote" v-if="count > 0">{{ count }} New</p>
-                            <p v-else></p>
-                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
                         </div>
-                            <div>
-                                <p class="card-text-body">Generate and download reports custom reports.</p>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 0px;" />
-                        <button class="card-button">Launch</button>
                     </div>
                 </div>
+
+                <div v-if="admins.valueOf(true)">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/zendesk.svg" />
+                                        <p class="card-text-title">Payments Recieved</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Manage and confirmed all recorded payroll payments from
+                                        customers.</p>
+                                </div>
+                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="admins.valueOf(true)">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/jira.svg" />
+                                        <p class="card-text-title">Groups</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Create, share and save groups that are referenced
+                                        frequently within the S3V!N system.</p>
+                                </div>
+                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="admins.valueOf(true) || business.valueOf(true)">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body-style">
+                                    <div class="card-body-image">
+                                        <img class="card-icon" src="@/assets/dropbox.svg" />
+                                        <p class="card-text-title">Reports</p>
+                                    </div>
+                                    <div>
+                                        <p class="newnote" v-if="count > 0">{{ count }} New</p>
+                                        <p v-else></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="card-text-body">Generate and download reports custom reports.</p>
+                                </div>
+                            </div>
+                            <hr style="margin-bottom: 0px;" />
+                            <button class="card-button">Launch</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
         <header class="pagenav">
             <div>
-                <hr style="margin-bottom: -10px;"/>
+                <hr style="margin-bottom: -10px; border:1px solid #667085;" />
             </div>
             <nav>
                 <div class="pagecont">
                     <div class="pagenavfont">
-                        <img src="@\assets\arrow-narrow-left.svg" style="margin-right: 5px;width: 20px;height: 20px;">
-                        <p class="pagenavfont">Previous</p>
+                        <button class="pagebutton">
+                            <img src="@\assets\arrow-narrow-left.svg"
+                                style="margin-right: 5px;width: 20px;height: 20px;margin-top: -1px;">
+                            Previous
+                        </button>
                     </div>
                 </div>
+
                 <div class="pagecont">
                     <div class="pagenavfont">
-                        <p class="pagenavfont">Next</p>
-                        <img src="@\assets\arrow-narrow-right.svg" style="margin-left: 5px;width: 20px;height: 20px;">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                                <li class="page-item"><a class="page-link" href="#">9</a></li>
+                                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="pagecont">
+                    <div class="pagenavfont">
+                        <button class="pagebutton">
+                            Next
+                            <img src="@\assets\arrow-narrow-right.svg"
+                                style="margin-left: 5px;width: 20px;height: 20px;margin-top: -1px;">
+                        </button>
                     </div>
                 </div>
             </nav>
@@ -344,13 +423,13 @@ body {
 
 .middle {
     margin-top: 10px;
-    margin-left: 5.5%;
+    margin-left: 7.8%;
     width: 100%;
 }
 
 .layout-cards {
-    margin-left: 5.5%;
-    width: 89%;
+    margin-left: 7.8%;
+    width: 84.4%;
     margin-top: 24px;
     display: flex;
     flex-direction: row;
@@ -359,8 +438,8 @@ body {
 }
 
 .pagenav {
-    margin-left: 5.5%;
-    margin-right: 5.5%;
+    margin-left: 7.8%;
+    margin-right: 7.8%;
 }
 
 nav {
@@ -399,6 +478,7 @@ nav {
 .profile {
     width: 40px;
     height: 40px;
+    margin-left: 10px;
     border-radius: 50px;
 
     &:hover {
@@ -438,7 +518,7 @@ nav {
     background-color: white;
     font-size: 14px;
     border-radius: 5px;
-    padding: 10px 14px;
+    padding: 5px 7px;
     border: 1px solid #E5E7EB;
 
     &:hover {
@@ -458,11 +538,17 @@ nav {
         color: #059669;
         border-bottom: 2px solid #10B981;
         cursor: pointer;
+
+    }
+
+    &:focus {
+        color: #059669;
+        border-bottom: 2px solid #10B981;
     }
 }
 
 .pagenavfont {
-    margin-top: 12px;
+    margin-top: 14px;
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -504,31 +590,61 @@ nav {
     width: 40px;
 }
 
-.card-body{
+.card-body {
     margin-top: -10px;
 }
 
-.card-body-style{
+.card-body-style {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.card-body-image{
+.card-body-image {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.card-text-title{
-    padding-left: 10px; 
+
+.card-text-title {
+    padding-left: 10px;
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
 }
 
-.card-text-body{
+.card-text-body {
+    font-size: 14px;
     margin-top: 5px;
     margin-bottom: -15px;
+}
+
+.pagebutton {
+    border-radius: 5px;
+    background-color: white;
+    border: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    color: #475467;
+
+    &:hover {
+        background-color: #E5E7EB;
+    }
+}
+
+.pagination>li>a,
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    border-color: transparent;
+    color: #475467;
+    font-weight: 600;
+
+    &:focus {
+        border-radius: 0px;
+        outline: none;
+    }
 }
 </style>
